@@ -61,7 +61,7 @@ Check [example](https://github.com/freeletics/StateLayout/tree/master/example) a
 # License
 
 ```
-Copyright 2019 Freeletics
+Copyright 2020 Freeletics
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
