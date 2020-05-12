@@ -1,16 +1,16 @@
 # StateLayout
 
+[![CircleCI](https://circleci.com/gh/freeletics/StateLayout.svg?style=svg)](https://circleci.com/gh/freeletics/StateLayout)
+
 StateLayout is a custom view. It is a wrapper around FrameLayout that makes it more convenient to toggle between different `ViewState`s.
  
 A state is rendered by simply calling `showState()` and passing an instance of `ViewState`. This will hide all currently visible view states and display the new one.
  
 `ViewState`s are lazily inflated/constructed when they need to be shown using `ViewState.onCreateView()`. Since this is a potentially expensive operation, `StateLayout` has the ability to re-use views between different `ViewState`s.
 
-[![CircleCI](https://circleci.com/gh/freeletics/StateLayout.svg?style=svg)](https://circleci.com/gh/freeletics/StateLayout)
-
 # How to use
 
-1. Add StateLayout view to XML layout
+### 1. Add StateLayout view to XML layout
 ```lang=xml
 <com.freeletics.statelayout.StateLayout
     android:id="@+id/state_layout"
@@ -19,7 +19,7 @@ A state is rendered by simply calling `showState()` and passing an instance of `
 ```
 
 
-2. Define custom states in code. 
+### 2. Define custom states in code. 
 For example, simple state can be defined using `ViewState.create()` fuction:
 ```lang=kotlin
 val loadingState = ViewState.create(R.layout.view_state_loading)
@@ -38,7 +38,7 @@ val contentState = BindableContent("Content ready")
 ```
 
 
-3. Setup required content
+### 3. Apply required content
 ```lang=kotlin
 val stateLayout = findViewById<StateLayout>(R.id.state_layout)
 stateLayout.showState(loadingState)
@@ -47,7 +47,8 @@ stateLayout.showState(contentState)
 ```
 
 
-4. It is possible to specify transition between the states. Transition can be defined with `TransitionInflater` and later passed as an optional parameter to the `showState()` method
+### 4. Define transition animation (optional)
+It is possible to specify transition between the states. Transition can be defined with `TransitionInflater` and later passed as an optional parameter to the `showState()` method
 ```lang=kotlin
 val transition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.slide_left)
 transition.duration = 500
@@ -55,6 +56,7 @@ stateLayout.showState(contentState, transition)
 ```
 
 Check [example](https://github.com/freeletics/StateLayout/tree/master/example) app to see how it works.
+
 
 # License
 
