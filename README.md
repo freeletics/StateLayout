@@ -1,6 +1,8 @@
-# StateLayout
-
 [![CircleCI](https://circleci.com/gh/freeletics/StateLayout.svg?style=svg)](https://circleci.com/gh/freeletics/StateLayout)
+
+[![Download](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout/badge.svg) ](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout)
+
+# StateLayout
 
 StateLayout is a custom view. It is a wrapper around FrameLayout that makes it more convenient to toggle between different `ViewState`s.
  
@@ -57,6 +59,35 @@ stateLayout.showState(contentState, transition)
 
 Check [example](https://github.com/freeletics/StateLayout/tree/master/example) app to see how it works.
 
+
+# Dependency
+Dependencies are hosted on Maven Central:
+
+```groovy
+implementation 'com.freeletics.statelayout:statelayout:1.0.0'
+```
+Keep in mind that this library is written in kotlin which means you also need to add `kotlin-stdlib` to a project using StateLayout.
+
+### Snapshot
+Latest snapshot (directly published from master branch):
+
+```groovy
+allprojects {
+    repositories {
+        // Your repositories.
+        // ...
+        // Add url to snapshot repository
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+
+```
+
+```groovy
+implementation 'com.freeletics.statelayout:statelayout:1.0.1-SNAPSHOT'
+```
 
 # License
 
