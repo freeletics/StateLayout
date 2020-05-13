@@ -25,13 +25,12 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-# TODO Uncomment when publishing is ready
-#      - gradle-publish/publish_artifacts:
-#          executor: gradle-publish/circleci-android
-#          context: "android-maven-publish"
-#          requires:
-#            - build
-#          filters:
-#            branches:
-#              only:
-#                - master
+      - gradle-publish/publish_artifacts:
+          executor: gradle-publish/circleci-android
+          context: "android-maven-publish"
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
