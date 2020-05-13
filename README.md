@@ -1,6 +1,8 @@
-# StateLayout
-
 [![CircleCI](https://circleci.com/gh/freeletics/StateLayout.svg?style=svg)](https://circleci.com/gh/freeletics/StateLayout)
+
+[![Download](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout/badge.svg) ](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout)
+
+# StateLayout
 
 StateLayout is a custom view. It is a wrapper around FrameLayout that makes it more convenient to toggle between different `ViewState`s.
  
@@ -11,7 +13,7 @@ A state is rendered by simply calling `showState()` and passing an instance of `
 # How to use
 
 ### 1. Add StateLayout view to XML layout
-```lang=xml
+```xml
 <com.freeletics.statelayout.StateLayout
     android:id="@+id/state_layout"
     android:layout_width="match_parent"
@@ -21,11 +23,11 @@ A state is rendered by simply calling `showState()` and passing an instance of `
 
 ### 2. Define custom states in code. 
 For example, simple state can be defined using `ViewState.create()` fuction:
-```lang=kotlin
+```kotlin
 val loadingState = ViewState.create(R.layout.view_state_loading)
 ```
 Or more complex states can be defined by extending `ViewState.Inflatable`:
-```lang=kotlin
+```kotlin
 class BindableContent(val text: String) : ViewState.Inflatable(R.layout.view_state_content) {
     override fun onBindView(view: View) {
         super.onBindView(view)
@@ -39,7 +41,7 @@ val contentState = BindableContent("Content ready")
 
 
 ### 3. Apply required content
-```lang=kotlin
+```kotlin
 val stateLayout = findViewById<StateLayout>(R.id.state_layout)
 stateLayout.showState(loadingState)
 ...
@@ -49,7 +51,7 @@ stateLayout.showState(contentState)
 
 ### 4. Define transition animation (optional)
 It is possible to specify transition between the states. Transition can be defined with `TransitionInflater` and later passed as an optional parameter to the `showState()` method
-```lang=kotlin
+```kotlin
 val transition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.slide_left)
 transition.duration = 500
 stateLayout.showState(contentState, transition)
@@ -57,6 +59,34 @@ stateLayout.showState(contentState, transition)
 
 Check [example](https://github.com/freeletics/StateLayout/tree/master/example) app to see how it works.
 
+
+# Dependency
+Dependencies are hosted on Maven Central:
+
+```groovy
+implementation 'com.freeletics.statelayout:statelayout:1.0.0'
+```
+
+### Snapshot
+Latest snapshot (directly published from master branch):
+
+```groovy
+allprojects {
+    repositories {
+        // Your repositories.
+        // ...
+        // Add url to snapshot repository
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+
+```
+
+```groovy
+implementation 'com.freeletics.statelayout:statelayout:1.0.1-SNAPSHOT'
+```
 
 # License
 

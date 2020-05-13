@@ -2,6 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+gradle.ext.isCiServer = System.getenv().containsKey("CI")
+logger.warn("Running on CI: ${gradle.ext.isCiServer}")
+
+if (gradle.ext.isCiServer) {
+    apply plugin: "com.vanniktech.maven.publish"
+}
+
 android {
     compileSdkVersion 29
 
@@ -11,16 +18,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
 }
 
 dependencies {
