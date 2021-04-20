@@ -1,3 +1,9 @@
+# Deprecated
+
+**We've stopped using `StateLayout` internally and are not maintaining this library anymore.**
+
+---------
+
 [![CircleCI](https://circleci.com/gh/freeletics/StateLayout.svg?style=svg)](https://circleci.com/gh/freeletics/StateLayout)
 
 [![Download](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout/badge.svg) ](https://maven-badges.herokuapp.com/maven-central/com.freeletics.statelayout/statelayout)
